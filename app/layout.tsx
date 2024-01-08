@@ -32,8 +32,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={classNames(inter.className, "debug-screens")}>
-				<HydrationHandler>{children}</HydrationHandler>
+			<body
+				className={classNames(
+					inter.className,
+					"debug-screens scroll-smooth"
+				)}
+			>
+				{/* <HydrationHandler>{children}</HydrationHandler> */}
+				{children}
 			</body>
 		</html>
 	);
