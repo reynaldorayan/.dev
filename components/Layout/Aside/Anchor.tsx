@@ -1,6 +1,5 @@
 import useAppState, { IntersectedSectionProp } from "@/store";
 import classNames from "classnames";
-import Link from "next/link";
 import { PropsWithChildren, forwardRef } from "react";
 
 type Props = {
@@ -8,35 +7,35 @@ type Props = {
 	to: IntersectedSectionProp;
 };
 
+export const handleNavigate = (to: IntersectedSectionProp) => {
+	const section = document.querySelector(`[data-slide="${to}"]`);
+
+	if (section) {
+		section.scrollIntoView({ behavior: "smooth" });
+	}
+};
+
 const Anchor = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
-	({ label, to }, ref) => {
+	({ label, to, children }, ref) => {
 		const { intersectedSection } = useAppState((store) => store);
 
 		const wrapper = classNames(
 			// Base styles
-			"relative flex gap-2 items-center",
+			"relative flex gap-2 items-center tracking-wide",
 			// Before base styles
-			"before:relative before:border",
-			// Animation
-			"duration-500 ease-in-out",
+			"before:relative before:border-y before:rounded-r-full before:border-indigo-200 before:duration-1000 before:transition-all before:ease-in-out",
 			// Logical styles
 			{
-				["before:w-[40px]"]: !to.includes(intersectedSection),
-				["before:w-[100px]"]: to.includes(intersectedSection),
+				["before:w-[60px] cursor-pointer"]:
+					!to.includes(intersectedSection),
+				["before:w-[120px] cursor-not-allowed"]:
+					to.includes(intersectedSection),
 			}
 		);
 
-		const handleNavigate = (to: IntersectedSectionProp) => {
-			const section = document.querySelector(`[data-slide="${to}"]`);
-
-			if (section) {
-				section.scrollIntoView({ behavior: "smooth" });
-			}
-		};
-
 		return (
 			<div onClick={() => handleNavigate(to)} className={wrapper} ref={ref}>
-				{label ?? to}
+				{label ?? children ?? to}
 			</div>
 		);
 	}

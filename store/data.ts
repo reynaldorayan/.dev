@@ -15,10 +15,10 @@ export type DataProps = {
 
 const data: DataProps = {
 	developer: "Rayan Reynaldo",
-	role: "Junior Developer",
+	role: "Junior Full-stack Developer",
 	email: "me@reynaldorayan.dev",
 	greeting:
-		"Hi! I'm a passionate developer from the Philippines who enjoys turning ideas into software solutions.",
+		"Hola! I'm a passionate developer from the Philippines who enjoys turning ideas into software solutions.",
 	socials: {
 		linkedin: "https://ph.linkedin.com/in/imdevry",
 		github: "https://github.com/reynaldorayan",

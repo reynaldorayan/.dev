@@ -38,8 +38,7 @@ export default function RootLayout({
 					"debug-screens scroll-smooth"
 				)}
 			>
-				{/* <HydrationHandler>{children}</HydrationHandler> */}
-				{children}
+				<HydrationHandler>{children}</HydrationHandler>
 			</body>
 		</html>
 	);

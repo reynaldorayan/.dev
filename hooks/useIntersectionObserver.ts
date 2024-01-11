@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export const ioConfig: IntersectionObserverInit = {
 	root: null,
 	rootMargin: "0px",
-	threshold: 0.8,
+	threshold: 0.5,
 };
 
 export default function useIntersectionObserver(

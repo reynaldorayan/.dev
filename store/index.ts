@@ -8,6 +8,8 @@ interface AppState {
 	data: DataProps;
 	intersectedSection: IntersectedSectionProp;
 	setIntersectedSection: (intersectedSection: IntersectedSectionProp) => void;
+	pageScrollPercentage: string;
+	setPageScrollPercentage: (pageScrollPercentage: string) => void;
 }
 
 const useAppState = create<AppState>()(
@@ -15,11 +17,16 @@ const useAppState = create<AppState>()(
 		persist(
 			(set, get) => ({
 				data,
+				//
 				intersectedSection: "about",
 				setIntersectedSection: (intersectedSection) =>
 					set({ ...get(), intersectedSection }),
+				//
+				pageScrollPercentage: "0%",
+				setPageScrollPercentage: (pageScrollPercentage) =>
+					set({ ...get(), pageScrollPercentage }),
 			}),
-			{ name: "appState" }
+			{ name: "zustand-store" }
 		)
 	)
 );
